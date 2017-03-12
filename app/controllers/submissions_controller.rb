@@ -10,6 +10,12 @@ class SubmissionsController < ApplicationController
 
   def accept
     #zaakceptuj zgloszenie
+    id = params[:id]
+    puts "\n\n Moje id: #{id}\n\n\n"
+
+    submission = Submission.find(id)
+    submission.accepted = true
+    submission.save
 
     redirect_to :submissions
   end
