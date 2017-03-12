@@ -6,6 +6,14 @@ class SubmissionsController < ApplicationController
   def index
     @submissions = Submission.all
   end
+
+
+  def accept
+    #zaakceptuj zgloszenie
+
+    redirect_to :submissions
+  end
+
   #renderuje widok index
   # GET /submissions/1
   # GET /submissions/1.json
