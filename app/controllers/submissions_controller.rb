@@ -4,7 +4,7 @@ class SubmissionsController < ApplicationController
   # GET /submissions
   # GET /submissions.json
   def index
-    @submissions = Submission.all
+    @submissions = Submission.all.order(:name)
   end
 
 
@@ -15,6 +15,18 @@ class SubmissionsController < ApplicationController
 
     submission = Submission.find(id)
     submission.accepted = true
+    submission.save
+
+    redirect_to :submissions
+  end
+
+  def reject
+    #zaakceptuj zgloszenie
+    id = params[:id]
+    puts "\n\n Moje id: #{id}\n\n\n"
+
+    submission = Submission.find(id)
+    submission.accepted = false
     submission.save
 
     redirect_to :submissions
